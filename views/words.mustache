@@ -8,10 +8,11 @@
 </div>
 
 <form class="" action="/" method="post">
-  <input type="text" name="letter" placeholder="Letter">
+  <input type="text" maxlength='1' name="letter" placeholder="Letter">
   <br></br>
   <button type="submit" name="button">Take A Guess</button>
 </form>
+
 <div class="guessed">
 <h4>Letters Guessed: </h4>
 <p>{{#letter_guess}}{{.}}{{/letter_guess}}

@@ -39,7 +39,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   let new_letter = req.body.letter;
-  req.checkBody('letter', 'Please insert one letter at a time!').isLength();
+  req.checkBody('letter', 'Please insert one letter at a time!').isLength({max:1});
   req.checkBody('letter', 'Your guss can only include letters!').isAlpha();
 
 let errors = req.getValidationResult();
@@ -56,11 +56,13 @@ for(var i = 0; i < word_guess.length; i++) {
     match = true
     guess_amt == guess_amt
     underscore[i] = word_guess[i];
-    letter_guess.push(new_letter);
   }
 }
+if(word_guess.indexOf(new_letter) ===-1) {
+  letter_guess.push(new_letter);
 
-if (new_letter == letter_guess ) {
+}
+if (new_letter == letter_guess) {
   guess_amt == guess_amt
 }
 
@@ -81,7 +83,7 @@ if (guess_amt == 0) {
   started();
 }
 
-obj = {
+objects = {
   word: underscore,
   attempts: guess_amt,
   leter: new_letter,
@@ -94,7 +96,7 @@ res.redirect('/');
 });
 
 router.get('/lose', function(req, res) {
-  res.render('lose');
+  res.render('lose', {random_word});
 });
 router.post('/lose', function(req, res) {
   req.session.destroy();
