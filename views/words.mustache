@@ -1,0 +1,22 @@
+<body>
+{{#objects}}
+<div class='all'>
+<span>You have <div id='attempt'>{{attempts}}</div> guesses left.</span>
+<br>
+<h3>{{#word}}{{.}}{{/word}}</h3>
+<br>
+</div>
+
+<form class="" action="/" method="post">
+  <input type="text" name="letter" placeholder="Letter">
+  <br></br>
+  <button type="submit" name="button">Take A Guess</button>
+</form>
+<div class="guessed">
+<h4>Letters Guessed: </h4>
+<p>{{#letter_guess}}{{.}}{{/letter_guess}}
+</p>
+<p>{{#error}}{{.}}{{/error}}</p>
+{{/objects}}
+</div>
+</body>
